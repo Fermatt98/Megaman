@@ -1,5 +1,6 @@
 package;
 import flixel.FlxSprite;
+import flixel.tile.FlxTilemap;
 
 class Reg
 {
@@ -17,4 +18,5 @@ class Reg
 	static public var megaman:FlxSprite;
 	static public var enemy2:FlxSprite;
 	static public var enemigoa:Spine;
+	static public var tilemap:FlxTilemap;
 }

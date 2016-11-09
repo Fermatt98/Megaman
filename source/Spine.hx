@@ -32,7 +32,7 @@ class Spine extends FlxSprite
 				movingRight = false;
 				velocity.x = Reg.velocityEnemy;
 			}
-			if (Reg.player.y == y-Reg.player.height+height)
+			if (Reg.megaman.y == y-Reg.megaman.height+height)
 			{
 				if(movingRight == false)
 					velocity.x = Reg.velocityEnemy * 3;
@@ -46,7 +46,7 @@ class Spine extends FlxSprite
 				else
 					velocity.x = Reg.velocityEnemy * -1;
 			}
-			if (FlxG.overlap(this, Reg.player))
+			if (FlxG.overlap(this, Reg.megaman))
 			{
 				//hp--
 			}

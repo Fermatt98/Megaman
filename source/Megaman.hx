@@ -17,7 +17,7 @@ class Megaman extends FlxSprite
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
-		makeGraphic(24, 24);
+		makeGraphic(4, 4);
 		FlxG.state.add(this);
 	}
 	
@@ -46,12 +46,14 @@ class Megaman extends FlxSprite
 		{
 			acceleration.y = Reg.megamanAccelerationY;
 			maxVelocity.y = Reg.megamanMaxVelocityY;
+			/*
 			if (y + height > FlxG.height)
 			{
 				isJumping = false;
 				velocity.y = 0;
 				acceleration.y = 0;
 			}
+			*/
 		}
 		if (FlxG.keys.justPressed.X && Reg.cantDisparos < Reg.maxCantDisparos)
 		{
