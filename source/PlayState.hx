@@ -23,9 +23,9 @@ class PlayState extends FlxState
 		FlxG.worldBounds.set(0, 0, Reg.tilemap.width, Reg.tilemap.height);
 		
 		Reg.tilemap.setTileProperties(0, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(1, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(2, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(3, FlxObject.NONE);
+		Reg.tilemap.setTileProperties(1, FlxObject.NONE, offStairs);
+		Reg.tilemap.setTileProperties(2, FlxObject.NONE, offStairs);
+		Reg.tilemap.setTileProperties(3, FlxObject.NONE, offStairs);
 		Reg.tilemap.setTileProperties(4, FlxObject.ANY);
 		Reg.tilemap.setTileProperties(5, FlxObject.ANY);
 		Reg.tilemap.setTileProperties(6, FlxObject.ANY);
@@ -34,7 +34,7 @@ class PlayState extends FlxState
 		Reg.tilemap.setTileProperties(9, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(10, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(11, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(12, FlxObject.NONE);
+		Reg.tilemap.setTileProperties(12, FlxObject.NONE, upStairs);
 		Reg.tilemap.setTileProperties(13, FlxObject.ANY);
 		
 		
@@ -70,11 +70,28 @@ class PlayState extends FlxState
 		}
 	}
 	
-	private function upStairs():Void
+	private function upStairs(a:FlxObject, b:FlxObject):Void
 	{
-		if (FlxG.keys.justPressed.UP)
+		if (b == Reg.megaman &&FlxG.keys.justPressed.UP && !Reg.ladder)
 		{
-			trace("YEAHHHH");
+			Reg.megaman.makeGraphic(10, 24);
+			Reg.megaman.velocity.x = 0;
+			Reg.megaman.x = a.x;
+			Reg.megaman.x += Reg.megaman.width - a.width/2;
+			Reg.ladder = true;
+		}
+	}
+	
+	private function offStairs(a:FlxObject, b:FlxObject):Void
+	{
+		if (b == Reg.megaman)
+		{
+			if (Reg.ladder)
+			{
+				Reg.ladder = false;
+				Reg.megaman.y -= Reg.megaman.height;
+				Reg.megaman.makeGraphic(24, 24);
+			}
 		}
 	}
 }

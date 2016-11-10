@@ -8,6 +8,7 @@ class Reg
 	inline static public var megamanAccelerationY = 2000;
 	inline static public var megamanMaxVelocityY = 250;
 	inline static public var megamanJumpTime = 0.2;
+	inline static public var megamanLadderSpeed = 100;
 	inline static public var disparoVelocityX = 300;
 	inline static public var maxCantDisparos = 3;
 	inline static public var enemy2Distance = 75;
@@ -21,4 +22,5 @@ class Reg
 	static public var enemigoa:Spine;
 	static public var tilemap:FlxTilemap;
 	static public var vidas = 15;
+	static public var ladder = false;
 }
