@@ -13,10 +13,12 @@ class Reg
 	inline static public var enemy2Distance = 75;
 	inline static public var enemy2Velocity = -50;
 	inline static public var velocityEnemy = 50;
+	inline static public var accelerationEnemy3 = 50;
 	
 	static public var cantDisparos = 0;
 	static public var megaman:FlxSprite;
 	static public var enemy2:FlxSprite;
 	static public var enemigoa:Spine;
 	static public var tilemap:FlxTilemap;
+	static public var vidas = 15;
 }

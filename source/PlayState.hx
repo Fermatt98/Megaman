@@ -30,13 +30,12 @@ class PlayState extends FlxState
 		Reg.tilemap.setTileProperties(5, FlxObject.ANY);
 		Reg.tilemap.setTileProperties(6, FlxObject.ANY);
 		Reg.tilemap.setTileProperties(7, FlxObject.ANY);
-		Reg.tilemap.setTileProperties(8, FlxObject.ANY);
+		Reg.tilemap.setTileProperties(8, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(9, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(10, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(11, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(12, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(13, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(14, FlxObject.ANY);
+		Reg.tilemap.setTileProperties(13, FlxObject.ANY);
 		
 		
 		add(Reg.tilemap);

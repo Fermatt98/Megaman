@@ -22,12 +22,18 @@ class AssetData {
 			type.set ("assets/data/Level1.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/data/Megaman.oep", "assets/data/Megaman.oep");
 			type.set ("assets/data/Megaman.oep", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/gonzalo re piola.oep", "assets/gonzalo re piola.oep");
+			type.set ("assets/gonzalo re piola.oep", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/gonzalo.oel", "assets/gonzalo.oel");
+			type.set ("assets/gonzalo.oel", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/images-go-here.txt", "assets/images/images-go-here.txt");
 			type.set ("assets/images/images-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("assets/images/MegamanTiles.png", "assets/images/MegamanTiles.png");
 			type.set ("assets/images/MegamanTiles.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/music/music-goes-here.txt", "assets/music/music-goes-here.txt");
 			type.set ("assets/music/music-goes-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
+			path.set ("assets/NewPiskel.png", "assets/NewPiskel.png");
+			type.set ("assets/NewPiskel.png", Reflect.field (AssetType, "image".toUpperCase ()));
 			path.set ("assets/sounds/sounds-go-here.txt", "assets/sounds/sounds-go-here.txt");
 			type.set ("assets/sounds/sounds-go-here.txt", Reflect.field (AssetType, "text".toUpperCase ()));
 			path.set ("flixel/sounds/beep.ogg", "flixel/sounds/beep.ogg");
