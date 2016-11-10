@@ -69,4 +69,12 @@ class PlayState extends FlxState
 			}
 		}
 	}
+	
+	private function upStairs():Void
+	{
+		if (FlxG.keys.justPressed.UP)
+		{
+			trace("YEAHHHH");
+		}
+	}
 }
