@@ -81,6 +81,22 @@ class PlayState extends FlxState
 		{
 			Reg.platform2 = new Platform2(x, y);
 		}
+		if (entityName == "mierdaquevuela")
+		{
+			var enemigo2 = new Enemy2(x, y);
+		}
+		if (entityName == "mierdaquesubeybaja")
+		{
+			var enemigo3 = new Enemy3(x, y);
+		}
+		if (entityName == "mierdaquegarcha")
+		{
+			var enemigo4 = new Enemy4(x, y);
+		}
+		if (entityName == "elquetehacemierda")
+		{
+			var boss = new BossFinal(x, y);
+		}
 	}
 	
 	private function upStairs(a:FlxObject, b:FlxObject):Void
