@@ -15,43 +15,47 @@ class Enemy4 extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(20, 20);
+		loadGraphic(AssetPaths.Enemy4__png);
 		FlxG.state.add(this);
 		body = new Cuerpo(x, y - height);
 	}
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
-		_time += elapsed;
-		if (Reg.megaman.x < x)
+		if (isOnScreen())
 		{
-			velocity.x = -50;
-		}
-		else
-		{
-			velocity.x = 50;
-		}
-		if (_time > 2)
-		{
-			destroy();
-		}
-		for (i in 0...Reg.disparoArray.length)
-		{
-			if (FlxG.overlap(this, Reg.disparoArray[i]))
+			_time += elapsed;
+			if (Reg.megaman.x < x)
 			{
-				Reg.score += Reg.scoreEnemigo1;
-				kill();
-				Reg.disparoArray[i].kill();
+				velocity.x = -50;
 			}
-		}
-		if (!Reg.megamanJustHit)
-		{
-			if (FlxG.overlap(this, Reg.megaman))
+			else
 			{
-				Reg.vidas -= 2;
-				Reg.megamanJustHit = true;
-				if (Reg.vidas <= 0)
+				velocity.x = 50;
+			}
+			if (_time > 2)
+			{
+				destroy();
+			}
+			for (i in 0...Reg.disparoArray.length)
+			{
+				if (FlxG.overlap(this, Reg.disparoArray[i]))
 				{
-					Reg.megaman.kill();
+					Reg.score += Reg.scoreEnemigo1;
+					kill();
+					Reg.disparoArray[i].kill();
+				}
+			}
+			if (!Reg.megamanJustHit)
+			{
+				if (FlxG.overlap(this, Reg.megaman))
+				{
+					Reg.vidas -= 2;
+					Reg.megamanJustHit = true;
+					if (Reg.vidas <= 0)
+					{
+						Reg.megaman.kill();
+					}
 				}
 			}
 		}

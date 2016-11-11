@@ -16,6 +16,7 @@ class Spine extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(16, 8, FlxColor.WHITE);
+		loadGraphic(AssetPaths.Enemy1__png);
 		y = y + height;
 		startX = x;
 		startY = y;
@@ -26,39 +27,42 @@ class Spine extends FlxSprite
 	override public function update(elapsed:Float) 
 	{
 		super.update(elapsed);
-		FlxG.collide(Reg.tilemap, this);
-		justTurned--;
-		if (Reg.megaman.y == y + height - Reg.megaman.height)
+		if (isOnScreen())
 		{
-			if (movingRight)
+			FlxG.collide(Reg.tilemap, this);
+			justTurned--;
+			if (Reg.megaman.y == y + height - Reg.megaman.height)
 			{
-				velocity.x = Reg.velocityEnemy * -2;
-			}
-			else
-			{
-				velocity.x = Reg.velocityEnemy * 2;
-			}		
-		}
-		else
-		{
-			if (movingRight)
-			{
-				velocity.x = Reg.velocityEnemy * -1;
-			}
-			else
-			{
-				velocity.x = Reg.velocityEnemy * 1;
-			}
-		}
-		if (!Reg.megamanJustHit)
-		{
-			if (FlxG.overlap(this, Reg.megaman))
-			{
-				Reg.vidas -= 2;
-				Reg.megamanJustHit = true;
-				if (Reg.vidas <= 0)
+				if (movingRight)
 				{
-					Reg.megaman.kill();
+					velocity.x = Reg.velocityEnemy * -2;
+				}
+				else
+				{
+					velocity.x = Reg.velocityEnemy * 2;
+				}		
+			}
+			else
+			{
+				if (movingRight)
+				{
+					velocity.x = Reg.velocityEnemy * -1;
+				}
+				else
+				{
+					velocity.x = Reg.velocityEnemy * 1;
+				}
+			}
+			if (!Reg.megamanJustHit)
+			{
+				if (FlxG.overlap(this, Reg.megaman))
+				{
+					Reg.vidas -= 2;
+					Reg.megamanJustHit = true;
+					if (Reg.vidas <= 0)
+					{
+						Reg.megaman.kill();
+					}
 				}
 			}
 		}

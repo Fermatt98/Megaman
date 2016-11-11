@@ -14,7 +14,7 @@ class Reg
 	inline static public var enemy2Distance = 75;
 	inline static public var enemy2Velocity = -50;
 	inline static public var velocityEnemy = 50;
-	inline static public var accelerationEnemy3 = 50;
+	inline static public var accelerationEnemy3 = 25;
 	inline static public var platMaxTimer = 4;
 	
 	inline static public var maxVidas:Int = 60;
@@ -40,12 +40,15 @@ class Reg
 	
 	static public var score:Int = 0;
 	static public var disparoArray:Array<Disparo>;
-	static public var disparoBossArray:Array<Disparo>;
+	static public var disparoBossArray:Array<DisparoBoss>;
 	static public var cantDisparosBoss = 0;
 	static public var megamanJustHit:Bool = false;
 	static public var barraVida:FlxSprite;
 	
 	inline static public var maxVidasE:Int = 60;
 	static public var vidasE = maxVidas;
+	inline static public var maxVelocityBoss = 300;
+	inline static public var accelerationBoss = 1000;
+	
 	
 }

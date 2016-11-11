@@ -38,7 +38,8 @@ class Megaman extends FlxSprite
 				invulTime = 0;
 			}
 		}
-		if (Reg.ladder){
+		if (Reg.ladder)
+		{
 			velocity.x = 0;
 			velocity.y = 0;
 			acceleration.y = 0;

@@ -3,6 +3,7 @@ package;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
+import flixel.math.FlxMath;
 
 /**
  * ...
@@ -12,19 +13,29 @@ class DisparoBoss extends FlxSprite
 {
 	private var _left = false;
 
-	public function new(?X:Float=0, ?Y:Float=0, left:Bool, ?SimpleGraphic:FlxGraphicAsset) 
+	public function new(?X:Float=0, ?Y:Float=0, left:Bool, ?angulo:Float = -1, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(8, 6);
 		FlxG.state.add(this);
-		if (left)
+		if (angulo == -1)
 		{
-			velocity.x = -Reg.disparoVelocityX;
+			if (left)
+			{
+				velocity.x = -Reg.disparoVelocityX;
+			}
+			else
+			{
+				velocity.x = Reg.disparoVelocityX;
+			}
 		}
 		else
 		{
-			velocity.x = Reg.disparoVelocityX;
+			angle = angulo;
+			velocity.x = Reg.disparoVelocityX * FlxMath.fastCos(angle);
+			velocity.y = Reg.disparoVelocityX * FlxMath.fastSin(angle);
 		}
+		
 	}
 	
 	override public function update(elapsed:Float):Void 
@@ -33,12 +44,12 @@ class DisparoBoss extends FlxSprite
 		if (!isOnScreen())
 		{
 			kill();
-			Reg.cantDisparos--;
+			Reg.cantDisparosBoss--;
 		}
 	}
 	override public function kill():Void 
 	{
 		super.kill();
-		Reg.cantDisparos--;
+		Reg.cantDisparosBoss--;
 	}
 }

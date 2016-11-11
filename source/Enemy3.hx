@@ -18,6 +18,7 @@ class Enemy3 extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(12, 12);
+		loadGraphic(AssetPaths.Enemy3__png);
 		FlxG.state.add(this);
 	}
 	override public function update(elapsed:Float):Void 

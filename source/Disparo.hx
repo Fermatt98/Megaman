@@ -33,7 +33,6 @@ class Disparo extends FlxSprite
 		if (!isOnScreen())
 		{
 			kill();
-			Reg.cantDisparos--;
 		}
 	}
 	override public function kill():Void 
