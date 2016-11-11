@@ -19,7 +19,8 @@ class Reg
 	static public var cantDisparos = 0;
 	static public var megaman:FlxSprite;
 	static public var enemy2:FlxSprite;
-	static public var enemigoa:Spine;
+	static public var enemy4:FlxSprite;
+	static public var velocityEnemy3:Float = 25;
 	static public var tilemap:FlxTilemap;
 	static public var vidas = 15;
 	static public var ladder = false;

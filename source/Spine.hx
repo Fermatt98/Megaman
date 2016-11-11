@@ -28,7 +28,7 @@ class Spine extends FlxSprite
 		super.update(elapsed);
 		FlxG.collide(Reg.tilemap, this);
 		justTurned--;
-		if (Reg.megaman.y == y - height)
+		if (Reg.megaman.y == y + height - Reg.megaman.height)
 		{
 			if (movingRight)
 			{

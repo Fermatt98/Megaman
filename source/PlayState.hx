@@ -75,12 +75,13 @@ class PlayState extends FlxState
 	
 	private function upStairs(a:FlxObject, b:FlxObject):Void
 	{
-		if (b == Reg.megaman && FlxG.keys.justPressed.UP && !Reg.ladder)
+		if (b == Reg.megaman &&FlxG.keys.justPressed.UP && !Reg.ladder)
 		{
 			Reg.megaman.makeGraphic(10, 24);
 			Reg.megaman.velocity.x = 0;
 			Reg.megaman.x = a.x;
-			Reg.megaman.x += Reg.megaman.width - a.width/2;
+			Reg.megaman.x += Reg.megaman.width - a.width / 2;
+			Reg.megaman.y-=5;
 			Reg.ladder = true;
 		}
 	}

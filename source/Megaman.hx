@@ -52,6 +52,19 @@ class Megaman extends FlxSprite
 				var disparo = new Disparo(x, y, _left);
 				Reg.cantDisparos++;
 			}
+			if (FlxG.keys.justPressed.Z)
+			{
+				jumpTimer = 0;
+				jumpUp = true;
+				isJumping = true;
+				velocity.y = -Reg.megamanMaxVelocityY;
+				Reg.ladder = false;
+			}
+			if (FlxG.collide(this, Reg.tilemap))
+			{
+				Reg.ladder = false;
+				makeGraphic(24, 24);
+			}
 		}
 		else
 		{
@@ -72,7 +85,6 @@ class Megaman extends FlxSprite
 				jumpTimer = 0;
 				jumpUp = true;
 				isJumping = true;
-				y--;
 				velocity.y = -Reg.megamanMaxVelocityY;
 			}
 			if ((FlxG.keys.pressed.Z && jumpTimer < Reg.megamanJumpTime) && isJumping)

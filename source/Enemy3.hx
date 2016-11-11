@@ -2,14 +2,18 @@ package;
 
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
-
+import flixel.FlxG;
 /**
  * ...
  * @author ...
  */
 class Enemy3 extends FlxSprite
 {
-
+	
+	private var movement:Bool = false;
+	private var maxAcceleration:Int = 200;
+	private var wasOnScreen:Bool = false;
+		
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -48,7 +52,7 @@ class Enemy3 extends FlxSprite
 				Reg.vidas -= 1;
 				if (Reg.vidas == 0)
 				{
-					Reg.player.kill();
+					Reg.megaman.kill();
 				}
 			}
 		}
