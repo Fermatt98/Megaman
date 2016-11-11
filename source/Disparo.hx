@@ -36,4 +36,9 @@ class Disparo extends FlxSprite
 			Reg.cantDisparos--;
 		}
 	}
+	override public function kill():Void 
+	{
+		super.kill();
+		Reg.cantDisparos--;
+	}
 }

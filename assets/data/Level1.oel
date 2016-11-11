@@ -77,5 +77,8 @@
     <mierdaqueaparece1 id="10" x="64" y="368" />
     <mierdaqueaparece2 id="11" x="96" y="352" />
     <mierdaqueaparece1 id="12" x="144" y="352" />
+    <mierdadelpiso id="13" x="672" y="800" />
+    <mierdadelpiso id="14" x="80" y="512" />
+    <mierdadelpiso id="15" x="720" y="512" />
   </entities>
 </level>

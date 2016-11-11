@@ -34,6 +34,27 @@ class Enemy4 extends FlxSprite
 		{
 			destroy();
 		}
+		for (i in 0...Reg.disparoArray.length)
+		{
+			if (FlxG.overlap(this, Reg.disparoArray[i]))
+			{
+				Reg.score += Reg.scoreEnemigo1;
+				kill();
+				Reg.disparoArray[i].kill();
+			}
+		}
+		if (!Reg.megamanJustHit)
+		{
+			if (FlxG.overlap(this, Reg.megaman))
+			{
+				Reg.vidas -= 2;
+				Reg.megamanJustHit = true;
+				if (Reg.vidas <= 0)
+				{
+					Reg.megaman.kill();
+				}
+			}
+		}
 	}
 	
 }

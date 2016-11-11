@@ -3,7 +3,7 @@ package;
 import flixel.FlxSprite;
 import flixel.system.FlxAssets.FlxGraphicAsset;
 import flixel.FlxG;
-
+import flixel.util.FlxColor;
 /**
  * ...
  * @author ...
@@ -28,6 +28,16 @@ class Enemy2 extends FlxSprite
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		for (i in 0...Reg.disparoArray.length)
+		{
+			if (FlxG.overlap(this, Reg.disparoArray[i]))
+			{
+				color = FlxColor.BLUE;
+				Reg.score += Reg.scoreEnemigo1;
+				kill();
+				Reg.disparoArray[i].kill();
+			}
+		}
 		if (((Reg.megaman.x + Reg.megaman.width / 2) - (x + width / 2) < Reg.enemy2Distance && (Reg.megaman.x + Reg.megaman.width / 2) - (x + width / 2) > -Reg.enemy2Distance) && !_attack)
 		{
 			_attack = true;
@@ -86,6 +96,19 @@ class Enemy2 extends FlxSprite
 						velocity.x = Reg.enemy2Velocity;
 					}
 					_attack = false;
+				}
+			}
+		}
+
+		if (!Reg.megamanJustHit)
+		{
+			if (FlxG.overlap(this, Reg.megaman))
+			{
+				Reg.vidas -= 2;
+				Reg.megamanJustHit = true;
+				if (Reg.vidas <= 0)
+				{
+					Reg.megaman.kill();
 				}
 			}
 		}

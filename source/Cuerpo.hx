@@ -30,6 +30,15 @@ class Cuerpo extends FlxSprite
 	{
 		super.update(elapsed);
 		_time += elapsed;
+		for (i in 0...Reg.disparoArray.length)
+		{
+			if (FlxG.overlap(this, Reg.disparoArray[i]))
+			{
+				Reg.score += Reg.scoreEnemigo1;
+				kill();
+				Reg.disparoArray[i].kill();
+			}
+		}
 		if (Reg.megaman.x < x && combate == false)
 		{
 			velocity.x = -50;
@@ -49,66 +58,78 @@ class Cuerpo extends FlxSprite
 		if (_time > 3)
 		{
 			if (((Reg.megaman.x + Reg.megaman.width / 2) - (x + width / 2) < Reg.enemy2Distance && (Reg.megaman.x + Reg.megaman.width / 2) - (x + width / 2) > -Reg.enemy2Distance) && !_attack)
-		{
-			_attack = true;
-			_down = true;
-			velocity.x = (Reg.megaman.x + Reg.megaman.width / 2 - x + width / 2)*2;
-			velocity.y = (Reg.megaman.y + Reg.megaman.height / 2 - y + height / 2)*2;
-			megaY = Reg.megaman.y + Reg.megaman.height;
-			if (megaY > y + height)
 			{
-				megaDown = true;
+				_attack = true;
+				_down = true;
+				velocity.x = (Reg.megaman.x + Reg.megaman.width / 2 - x + width / 2)*2;
+				velocity.y = (Reg.megaman.y + Reg.megaman.height / 2 - y + height / 2)*2;
+				megaY = Reg.megaman.y + Reg.megaman.height;
+				if (megaY > y + height)
+				{
+					megaDown = true;
+				}
+				else
+				{
+					megaDown = false;
+				}
 			}
-			else
+			if (_attack)
 			{
-				megaDown = false;
+				if (megaDown)
+				{
+					if ((megaY <= y + height) && _down)
+					{
+						_down = false;
+						velocity.y *= -1;
+					}
+					else if(!_down && _startY >= y)
+					{
+						velocity.y = 0;
+						if (Reg.megaman.x > x)
+						{
+							velocity.x = Reg.enemy2Velocity *-1;
+						}
+						else
+						{
+							velocity.x = Reg.enemy2Velocity;
+						}
+						_attack = false;
+					}
+				}
+				else
+				{
+					if ((megaY >= y + height) && _down)
+					{
+						_down = false;
+						velocity.y *= -1;
+					}
+					else if(!_down && _startY <= y)
+					{
+						velocity.y = 0;
+						if (Reg.megaman.x > x)
+						{
+							velocity.x = Reg.enemy2Velocity *-1;
+						}
+						else
+						{
+							velocity.x = Reg.enemy2Velocity;
+						}
+						_attack = false;
+					}
+				}
 			}
 		}
-		if (_attack)
+		if (!Reg.megamanJustHit)
 		{
-			if (megaDown)
+			if (FlxG.overlap(this, Reg.megaman))
 			{
-				if ((megaY <= y + height) && _down)
+				Reg.vidas -= 2;
+				Reg.megamanJustHit = true;
+				if (Reg.vidas <= 0)
 				{
-					_down = false;
-					velocity.y *= -1;
-				}
-				else if(!_down && _startY >= y)
-				{
-					velocity.y = 0;
-					if (Reg.megaman.x > x)
-					{
-						velocity.x = Reg.enemy2Velocity *-1;
-					}
-					else
-					{
-						velocity.x = Reg.enemy2Velocity;
-					}
-					_attack = false;
+					Reg.megaman.kill();
 				}
 			}
-			else
-			{
-				if ((megaY >= y + height) && _down)
-				{
-					_down = false;
-					velocity.y *= -1;
-				}
-				else if(!_down && _startY <= y)
-				{
-					velocity.y = 0;
-					if (Reg.megaman.x > x)
-					{
-						velocity.x = Reg.enemy2Velocity *-1;
-					}
-					else
-					{
-						velocity.x = Reg.enemy2Velocity;
-					}
-					_attack = false;
-				}
-			}
-		}
 		}
 	}
 	public function caminar(direccion:Bool)

@@ -15,7 +15,7 @@ class Megaman extends FlxSprite
 	private var _left = false;
 	private var jumpStart:Int;
 	private var jumpUp:Bool = false;
-	
+	private var invulTime:Float = 0;
 	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
@@ -23,11 +23,21 @@ class Megaman extends FlxSprite
 		makeGraphic(24, 24);
 		FlxG.state.add(this);
 		maxVelocity.y = Reg.megamanMaxVelocityY;
+		Reg.disparoArray = new Array<Disparo>();
 	}
 	
 	override public function update(elapsed:Float):Void 
 	{
 		super.update(elapsed);
+		if (Reg.megamanJustHit)
+		{
+			invulTime+= elapsed;
+			if (invulTime >= 2)
+			{
+				Reg.megamanJustHit = false;
+				invulTime = 0;
+			}
+		}
 		if (Reg.ladder){
 			velocity.x = 0;
 			velocity.y = 0;
@@ -50,7 +60,7 @@ class Megaman extends FlxSprite
 			}
 			if (FlxG.keys.justPressed.X && Reg.cantDisparos < Reg.maxCantDisparos)
 			{
-				var disparo = new Disparo(x, y, _left);
+				Reg.disparoArray[Reg.cantDisparos] = new Disparo(x, y, _left);
 				Reg.cantDisparos++;
 			}
 			if (FlxG.keys.justPressed.Z)
@@ -60,6 +70,7 @@ class Megaman extends FlxSprite
 				isJumping = true;
 				velocity.y = -Reg.megamanMaxVelocityY;
 				Reg.ladder = false;
+				makeGraphic(24, 24);
 			}
 			if (FlxG.collide(this, Reg.tilemap))
 			{
@@ -104,7 +115,7 @@ class Megaman extends FlxSprite
 			}
 			if (FlxG.keys.justPressed.X && Reg.cantDisparos < Reg.maxCantDisparos)
 			{
-				var disparo = new Disparo(x, y, _left);
+				Reg.disparoArray[Reg.cantDisparos] = new Disparo(x, y, _left);
 				Reg.cantDisparos++;
 			}
 		}

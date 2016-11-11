@@ -32,11 +32,11 @@ class Spine extends FlxSprite
 		{
 			if (movingRight)
 			{
-				velocity.x = Reg.velocityEnemy * -3;
+				velocity.x = Reg.velocityEnemy * -2;
 			}
 			else
 			{
-				velocity.x = Reg.velocityEnemy * 3;
+				velocity.x = Reg.velocityEnemy * 2;
 			}		
 		}
 		else
@@ -50,9 +50,17 @@ class Spine extends FlxSprite
 				velocity.x = Reg.velocityEnemy * 1;
 			}
 		}
-		if (FlxG.overlap(this, Reg.megaman))
+		if (!Reg.megamanJustHit)
 		{
-			//hp--
+			if (FlxG.overlap(this, Reg.megaman))
+			{
+				Reg.vidas -= 2;
+				Reg.megamanJustHit = true;
+				if (Reg.vidas <= 0)
+				{
+					Reg.megaman.kill();
+				}
+			}
 		}
 	}
 }

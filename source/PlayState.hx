@@ -44,6 +44,7 @@ class PlayState extends FlxState
 		FlxG.camera.setScrollBounds(0, Reg.tilemap.width, 0, Reg.tilemap.height);
 		loader.loadEntities(placeEntities, "entities");
 		FlxG.camera.follow(Reg.megaman);
+		Reg.barraVida = new Vida(15, 15);
 	}
 	
 	override public function update(elapsed:Float):Void
@@ -169,6 +170,11 @@ class PlayState extends FlxState
 				}					
 				Reg.mierdasDelPiso[s].justTurned = 45;
 			}
+		}
+		if (b == Reg.megaman)
+		{
+			Reg.vidas = 0;
+			Reg.megaman.kill();
 		}
 	}
 }
