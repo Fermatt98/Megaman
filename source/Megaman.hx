@@ -16,6 +16,7 @@ class Megaman extends FlxSprite
 	private var jumpStart:Int;
 	private var jumpUp:Bool = false;
 	
+	
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
@@ -80,11 +81,12 @@ class Megaman extends FlxSprite
 				_left = false;
 				velocity.x = Reg.megamanVelocity;
 			}
-			if (FlxG.keys.justPressed.Z && FlxG.collide(this, Reg.tilemap) && !isJumping)
+			if (FlxG.keys.justPressed.Z && (FlxG.collide(this, Reg.tilemap) || Reg.platBool) && !isJumping)
 			{
 				jumpTimer = 0;
 				jumpUp = true;
 				isJumping = true;
+				y -= 5;
 				velocity.y = -Reg.megamanMaxVelocityY;
 			}
 			if ((FlxG.keys.pressed.Z && jumpTimer < Reg.megamanJumpTime) && isJumping)
@@ -106,5 +108,10 @@ class Megaman extends FlxSprite
 				Reg.cantDisparos++;
 			}
 		}
+	}
+	public function setJumping():Void
+	{
+		isJumping = false;
+		Reg.platBool = true;
 	}
 }

@@ -50,9 +50,10 @@ class PlayState extends FlxState
 	{
 		super.update(elapsed);
 		FlxG.collide(Reg.tilemap, Reg.megaman);
-		if (FlxG.keys.justPressed.F)		
+		Reg.platTimer += elapsed;
+		if (Reg.platTimer > Reg.platMaxTimer)
 		{
-			Reg.enemigoa == new Spine(FlxG.width / 2, FlxG.height);
+			Reg.platTimer = 0;
 		}
 	}
 	
@@ -70,6 +71,14 @@ class PlayState extends FlxState
 		if (entityName == "mierdadelpiso")
 		{
 			Reg.mierdasDelPiso.push(new Spine(x, y));
+		}
+		if (entityName == "mierdaqueaparece1")
+		{
+			Reg.platform1 = new Platform1(x, y);
+		}
+		if (entityName == "mierdaqueaparece2")
+		{
+			Reg.platform2 = new Platform2(x, y);
 		}
 	}
 	

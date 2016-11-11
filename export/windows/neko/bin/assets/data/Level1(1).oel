@@ -65,17 +65,11 @@
 5,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,5,7,7,7,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,5,1,2,3,9,9,1,2,3,4,5,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9</tiles>
   <entities>
     <player id="0" x="32" y="912" />
-    <mierdadelpiso id="1" x="16" y="848" />
-    <mierdaqueaparece1 id="2" x="640" y="976" />
-    <mierdaqueaparece2 id="3" x="720" y="976" />
-    <mierdaqueaparece1 id="4" x="96" y="464" />
-    <mierdaqueaparece2 id="5" x="160" y="464" />
-    <mierdaqueaparece1 id="6" x="192" y="432" />
-    <mierdaqueaparece2 id="7" x="144" y="400" />
-    <mierdaqueaparece1 id="8" x="96" y="400" />
-    <mierdaqueaparece2 id="9" x="48" y="400" />
-    <mierdaqueaparece1 id="10" x="64" y="368" />
-    <mierdaqueaparece2 id="11" x="96" y="352" />
-    <mierdaqueaparece1 id="12" x="144" y="352" />
+    <mierdadelpiso id="1" x="80" y="848" />
+    <mierdadelpiso id="2" x="768" y="800" />
+    <mierdadelpiso id="3" x="208" y="512" />
+    <mierdadelpiso id="4" x="656" y="448" />
+    <mierdadelpiso id="5" x="912" y="512" />
+    <mierdadelpiso id="6" x="752" y="176" />
   </entities>
 </level>
