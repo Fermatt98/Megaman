@@ -44,7 +44,6 @@ class DisparoBoss extends FlxSprite
 		if (!isOnScreen())
 		{
 			kill();
-			Reg.cantDisparosBoss--;
 		}
 	}
 	override public function kill():Void 

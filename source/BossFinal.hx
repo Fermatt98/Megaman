@@ -22,6 +22,7 @@ class BossFinal extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(24, 24);
+		loadGraphic(AssetPaths.boss0__png);
 		FlxG.state.add(this);
 		random = new FlxRandom();
 		_angulo = FlxAngle.asRadians(180 / 5);

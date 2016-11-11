@@ -21,6 +21,7 @@ class Megaman extends FlxSprite
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(24, 24);
+		loadGraphic(AssetPaths.megaman0__png);
 		FlxG.state.add(this);
 		maxVelocity.y = Reg.megamanMaxVelocityY;
 		Reg.disparoArray = new Array<Disparo>();
@@ -71,12 +72,12 @@ class Megaman extends FlxSprite
 				isJumping = true;
 				velocity.y = -Reg.megamanMaxVelocityY;
 				Reg.ladder = false;
-				makeGraphic(24, 24);
+				loadGraphic(AssetPaths.megaman0__png);
 			}
 			if (FlxG.collide(this, Reg.tilemap))
 			{
 				Reg.ladder = false;
-				makeGraphic(24, 24);
+				loadGraphic(AssetPaths.megaman0__png);
 			}
 		}
 		else

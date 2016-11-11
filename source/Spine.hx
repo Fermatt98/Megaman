@@ -66,5 +66,9 @@ class Spine extends FlxSprite
 				}
 			}
 		}
+		else
+		{
+			velocity.x = 0;
+		}
 	}
 }

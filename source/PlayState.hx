@@ -103,7 +103,7 @@ class PlayState extends FlxState
 	{
 		if (b == Reg.megaman &&FlxG.keys.justPressed.UP && !Reg.ladder)
 		{
-			Reg.megaman.makeGraphic(10, 24);
+			Reg.megaman.loadGraphic(AssetPaths.megaman3__png);
 			Reg.megaman.velocity.x = 0;
 			Reg.megaman.x = a.x;
 			Reg.megaman.x += Reg.megaman.width - a.width / 2;
@@ -120,7 +120,7 @@ class PlayState extends FlxState
 			{
 				Reg.ladder = false;
 				Reg.megaman.y -= Reg.megaman.height;
-				Reg.megaman.makeGraphic(24, 24);
+				Reg.megaman.loadGraphic(AssetPaths.megaman0__png);
 			}
 		}
 	}
@@ -132,7 +132,7 @@ class PlayState extends FlxState
 			{
 				Reg.ladder = false;
 				Reg.megaman.y -= Reg.megaman.height;
-				Reg.megaman.makeGraphic(24, 24);
+				Reg.megaman.loadGraphic(AssetPaths.megaman0__png);
 			}
 		}
 		for (s in 0...Reg.mierdasDelPiso.length)
