@@ -44,4 +44,8 @@ class Reg
 	static public var cantDisparosBoss = 0;
 	static public var megamanJustHit:Bool = false;
 	static public var barraVida:FlxSprite;
+	
+	inline static public var maxVidasE:Int = 60;
+	static public var vidasE = maxVidas;
+	
 }
