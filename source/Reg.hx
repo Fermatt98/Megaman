@@ -40,6 +40,8 @@ class Reg
 	
 	static public var score:Int = 0;
 	static public var disparoArray:Array<Disparo>;
+	static public var disparoBossArray:Array<Disparo>;
+	static public var cantDisparosBoss = 0;
 	static public var megamanJustHit:Bool = false;
 	static public var barraVida:FlxSprite;
 }
