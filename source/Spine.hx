@@ -7,53 +7,52 @@ import flixel.util.FlxColor;
 
 class Spine extends FlxSprite
 {
-	var movingRight:Bool = true;
+	public var movingRight:Bool = true;
+	public var justTurned:Int = 10;
+	private var startX:Float;
+	private var startY:Float;
 	inline static var distanceSpeed:Int = 80;
 	public function new(?X:Float=0, ?Y:Float=0, ?SimpleGraphic:FlxGraphicAsset) 
 	{
 		super(X, Y, SimpleGraphic);
 		makeGraphic(16, 8, FlxColor.WHITE);
-		y = y - height;
+		y = y + height;
+		startX = x;
+		startY = y;
 		velocity.x = Reg.velocityEnemy * -1;
+		movingRight = false;
 		FlxG.state.add(this);
 	}
 	override public function update(elapsed:Float) 
 	{
 		super.update(elapsed);
-		if (isOnScreen())
+		FlxG.collide(Reg.tilemap, this);
+		justTurned--;
+		if (Reg.megaman.y == y - height)
 		{
-			if (x > FlxG.width - width && movingRight == false)
+			if (movingRight)
 			{
-				movingRight = true;
-				velocity.x = Reg.velocityEnemy * -1;
-			}
-			else if(x < 1 && movingRight == true)
-			{
-				movingRight = false;
-				velocity.x = Reg.velocityEnemy;
-			}
-			if (Reg.megaman.y == y-Reg.megaman.height+height)
-			{
-				if(movingRight == false)
-					velocity.x = Reg.velocityEnemy * 3;
-				else
-					velocity.x = Reg.velocityEnemy * -3;
+				velocity.x = Reg.velocityEnemy * -3;
 			}
 			else
 			{
-				if(movingRight == false)
-					velocity.x = Reg.velocityEnemy;
-				else
-					velocity.x = Reg.velocityEnemy * -1;
-			}
-			if (FlxG.overlap(this, Reg.megaman))
-			{
-				//hp--
-			}
+				velocity.x = Reg.velocityEnemy * 3;
+			}		
 		}
 		else
 		{
-			kill();
+			if (movingRight)
+			{
+				velocity.x = Reg.velocityEnemy * -1;
+			}
+			else
+			{
+				velocity.x = Reg.velocityEnemy * 1;
+			}
+		}
+		if (FlxG.overlap(this, Reg.megaman))
+		{
+			//hp--
 		}
 	}
 }

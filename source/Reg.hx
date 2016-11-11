@@ -23,4 +23,6 @@ class Reg
 	static public var tilemap:FlxTilemap;
 	static public var vidas = 15;
 	static public var ladder = false;
+	
+	static public var mierdasDelPiso:Array<Spine>;
 }

@@ -25,26 +25,25 @@ class PlayState extends FlxState
 		Reg.tilemap.setTileProperties(0, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(1, FlxObject.NONE, offStairs);
 		Reg.tilemap.setTileProperties(2, FlxObject.NONE, offStairs);
-		Reg.tilemap.setTileProperties(3, FlxObject.NONE, offStairs);
-		Reg.tilemap.setTileProperties(4, FlxObject.ANY);
-		Reg.tilemap.setTileProperties(5, FlxObject.ANY);
+		Reg.tilemap.setTileProperties(3, FlxObject.NONE, offStairs2);
+		Reg.tilemap.setTileProperties(4, FlxObject.ANY, spineRotation);
+		Reg.tilemap.setTileProperties(5, FlxObject.ANY, spineRotation);
 		Reg.tilemap.setTileProperties(6, FlxObject.ANY);
-		Reg.tilemap.setTileProperties(7, FlxObject.ANY);
+		Reg.tilemap.setTileProperties(7, FlxObject.ANY, pinchesRip);
 		Reg.tilemap.setTileProperties(8, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(9, FlxObject.NONE);
-		Reg.tilemap.setTileProperties(10, FlxObject.NONE);
+		Reg.tilemap.setTileProperties(10, FlxObject.NONE, spineRotation);
 		Reg.tilemap.setTileProperties(11, FlxObject.NONE);
 		Reg.tilemap.setTileProperties(12, FlxObject.NONE, upStairs);
-		Reg.tilemap.setTileProperties(13, FlxObject.ANY);
-		
+		Reg.tilemap.setTileProperties(13, FlxObject.ANY, pinchesRip);
 		
 		add(Reg.tilemap);
+		Reg.mierdasDelPiso = new Array<Spine>();
 		Reg.megaman = new Megaman();
 		Reg.megaman.kill();
 		FlxG.camera.setScrollBounds(0, Reg.tilemap.width, 0, Reg.tilemap.height);
 		loader.loadEntities(placeEntities, "entities");
 		FlxG.camera.follow(Reg.megaman);
-		
 	}
 	
 	override public function update(elapsed:Float):Void
@@ -68,11 +67,15 @@ class PlayState extends FlxState
 				Reg.megaman = new Megaman(x, y);
 			}
 		}
+		if (entityName == "mierdadelpiso")
+		{
+			Reg.mierdasDelPiso.push(new Spine(x, y));
+		}
 	}
 	
 	private function upStairs(a:FlxObject, b:FlxObject):Void
 	{
-		if (b == Reg.megaman &&FlxG.keys.justPressed.UP && !Reg.ladder)
+		if (b == Reg.megaman && FlxG.keys.justPressed.UP && !Reg.ladder)
 		{
 			Reg.megaman.makeGraphic(10, 24);
 			Reg.megaman.velocity.x = 0;
@@ -91,6 +94,70 @@ class PlayState extends FlxState
 				Reg.ladder = false;
 				Reg.megaman.y -= Reg.megaman.height;
 				Reg.megaman.makeGraphic(24, 24);
+			}
+		}
+	}
+	private function offStairs2(a:FlxObject, b:FlxObject):Void
+	{
+		if (b == Reg.megaman)
+		{
+			if (Reg.ladder)
+			{
+				Reg.ladder = false;
+				Reg.megaman.y -= Reg.megaman.height;
+				Reg.megaman.makeGraphic(24, 24);
+			}
+		}
+		for (s in 0...Reg.mierdasDelPiso.length)
+		{
+			if (b == Reg.mierdasDelPiso[s] && Reg.mierdasDelPiso[s].justTurned <= 0)
+			{
+				if (Reg.mierdasDelPiso[s].movingRight)
+				{
+					Reg.mierdasDelPiso[s].movingRight = false;
+				}
+				else
+				{
+					Reg.mierdasDelPiso[s].movingRight = true;
+				}					
+				Reg.mierdasDelPiso[s].justTurned = 45;
+			}
+		}
+	}
+	
+	private function spineRotation(a:FlxObject, b:FlxObject):Void
+	{
+		for (s in 0...Reg.mierdasDelPiso.length)
+		{
+			if (b == Reg.mierdasDelPiso[s] && Reg.mierdasDelPiso[s].justTurned <= 0)
+			{
+				if (Reg.mierdasDelPiso[s].movingRight)
+				{
+					Reg.mierdasDelPiso[s].movingRight = false;
+				}
+				else
+				{
+					Reg.mierdasDelPiso[s].movingRight = true;
+				}					
+				Reg.mierdasDelPiso[s].justTurned = 45;
+			}
+		}
+	}
+	private function pinchesRip(a:FlxObject, b:FlxObject):Void
+	{
+		for (s in 0...Reg.mierdasDelPiso.length)
+		{
+			if (b == Reg.mierdasDelPiso[s] && Reg.mierdasDelPiso[s].justTurned <= 0)
+			{
+				if (Reg.mierdasDelPiso[s].movingRight)
+				{
+					Reg.mierdasDelPiso[s].movingRight = false;
+				}
+				else
+				{
+					Reg.mierdasDelPiso[s].movingRight = true;
+				}					
+				Reg.mierdasDelPiso[s].justTurned = 45;
 			}
 		}
 	}
